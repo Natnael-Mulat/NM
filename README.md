@@ -1,2 +1,2 @@
 # natnaelmulat.github.io
-Personal Website
+Personal Website using basic HTML, CSS, and Javascript.

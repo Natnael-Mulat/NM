@@ -1277,36 +1277,28 @@ footer .credits a {
   display: inline;
   color: #00ff00; /* Neon green */
   font-family: 'Courier New', Courier, monospace;
+  font-size: 1.5rem; /* Adjust size to match the desired style */
 }
 
-.cursor {
-  display: inline-block;
-  background-color: #00ff00; /* Neon green */
-  width: 10px;
-  height: 20px;
-  margin-left: 5px;
-  animation: blink 0.7s steps(2, start) infinite;
-}
 
-@keyframes blink {
-  0%, 100% {
-    opacity: 1;
+  .cursor {
+    display: inline-block;
+    width: 10px;
+    height: 20px;
+    background-color: #00ff00;
+    animation: blink 1s steps(1) infinite;
   }
-  50% {
-    opacity: 0;
+
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
   }
-}
 
-/* Button for Hacker Style */
-.intro .btn-default {
-  color: #00ff00; /* Neon green */
-  border: 1px solid #00ff00;
-  background: transparent;
-  font-family: 'Courier New', Courier, monospace;
-  transition: all 0.3s ease;
-}
 
-.intro .btn-default:hover {
-  background: #00ff00;
-  color: #080303; /* Black background */
+/* Keep the title styling as default */
+.intro-title {
+  font-family: 'Arial', sans-serif; /* Adjust based on the current font */
+  color: white; /* Default color */
+  font-size: 3rem; /* Match existing style */
 }

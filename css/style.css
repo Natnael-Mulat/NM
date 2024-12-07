@@ -1281,7 +1281,8 @@ footer .credits a {
 
 .cursor {
   display: inline-block;
-  background-color: #00ff00; /* Neon green */
+  color: #00FF00; /* Change from white (#FFFFFF) to match background */
+  background-color: #00FF00;
   width: 10px;
   height: 20px;
   margin-left: 5px;

@@ -1281,19 +1281,28 @@ footer .credits a {
 }
 
 
-  .cursor {
-    display: inline-block;
-    width: 10px;
-    height: 20px;
-    background-color: #00ff00;
-    animation: blink 1s steps(1) infinite;
-  }
+.cursor {
+  display: inline-block;
+  width: 10px;
+  height: 20px;
+  background-color: #00ff00; /* Green color for the cursor */
+  margin-left: 2px;
+  animation: blink 1s infinite;
+  /* Remove potential inherited styles */
+  content: '';
+  border: none;
+  box-shadow: none;
+}
 
-  @keyframes blink {
-    50% {
-      opacity: 0;
-    }
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
   }
+  51%, 100% {
+    opacity: 0;
+  }
+}
 
 
 /* Keep the title styling as default */

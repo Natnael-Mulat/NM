@@ -60,24 +60,26 @@
   <!--/ Nav End /-->
 
 
-  <!--/ Intro Skew Star /-->
-  <div id="home" class="intro route bg-image" style="background-image: url(img/Stata-Code4.png)">
-    <div class="overlay-itro"></div>
-    <div class="intro-content display-table">
-      <div class="table-cell">
-        <div class="container"  id="typed-strings">
-          <!--<p class="display-6 color-d">Hello, world!</p>-->
-          <h1 class="intro-title mb-4">Natnael Mulat</h1>
-         
-          <p class="intro-subtitle"><span class="text-slider-items">Researcher, Problem Solver, Data Engineer, Soccer Player, Computer Scientist, Algorithm Explorer, Knowledge Seeker, Code Breaker, Lifelong Learner, Dynamic Thinker, Future Professor</span><strong class="text-slider"></strong></p>
-          <p class="pt-3"><a class="btn btn-default smoothScroll wow fadeInUp" href="#about" role="button" data-wow-delay="1s">Learn More</a></p> 
-          
-        </div>
-        
+<!--/ Intro Skew Star /-->
+<div id="home" class="intro route bg-image" style="background-image: url(img/Stata-Code4.png)">
+  <div class="overlay-itro" style="background: rgba(0, 0, 0, 0.85);"></div>
+  <div class="intro-content display-table">
+    <div class="table-cell">
+      <div class="container">
+        <h1 class="intro-title mb-4" style="color: #00ff00; font-family: 'Courier New', Courier, monospace;">Natnael Mulat</h1>
+        <p class="intro-subtitle">
+          <span id="text-slider" class="typed-text"></span><span class="cursor">|</span>
+        </p>
+        <p class="pt-3">
+          <a class="btn btn-default smoothScroll wow fadeInUp" href="#about" role="button" 
+             data-wow-delay="1s">Learn More</a>
+        </p> 
       </div>
     </div>
   </div>
-  <!--/ Intro Skew End /-->
+</div>
+<!--/ Intro Skew End /-->
+
 
   	
 
@@ -114,7 +116,7 @@
                     </h5>
                   </div>
                   <p class="lead">
-                    I'm a senior research fellow at <a href="https://blueprintlabs.mit.edu/" target="_blank" style="color: teal">Blueprint Labs</a> working with <a href="https://economics.mit.edu/people/faculty/parag-pathak" target="_blank" style="color: teal">Parag Pathak</a> and his collaborators on various projects involving mechanism desing, matching, school choice, and school closures in large districts. 
+                    I'm a senior research fellow at <a href="https://blueprintlabs.mit.edu/" target="_blank" style="color: teal">Blueprint Labs</a> working with <a href="https://economics.mit.edu/people/faculty/parag-pathak" target="_blank" style="color: teal">Parag Pathak</a> and his collaborators on various projects involving mechanism design, matching, school choice, and school closures in large districts. 
                     Before joining the MIT, I graduated from <a href="https://www.davidson.edu/" target="_blank" style="color: teal">Davidson College</a> studying Economics, Computer Science, and Mathematics. Summer of my junior year I was a Data Engineer intern at <a href="https://tresata.com" target="_blank" style="color: teal">Tresata</a> working on big data problems. In additon, 
                     I was also supervised by my undergraduate advisor <a href="https://www.davidson.edu/people/mark-foley" target="_blank" style="color: teal">Dr.Mark Foley</a> to work on an independent research exploring 
                     the effects that delayed graduation may have on income and job satisfaction (COVID-inspired). In the past, I have worked on several projects in Economics, Recommender Systems, Machine Learning, and Algorithm Design. You can contact me at namulat[at]mit[dot]edu.
@@ -525,5 +527,51 @@
   <!-- Template Main Javascript File -->
   <script src="js/main.js"></script>
 
-</body>
-</html>
+  <script>
+    const textItems = [
+      "Researcher",
+      "Problem Solver",
+      "Data Engineer",
+      "Soccer Player",
+      "Computer Scientist",
+      "Algorithm Explorer",
+      "Knowledge Seeker",
+      "Code Breaker",
+      "Lifelong Learner",
+      "Dynamic Thinker",
+      "Future Professor"
+    ];
+  
+    let index = 0;
+    let charIndex = 0;
+    const typingSpeed = 100;
+    const erasingSpeed = 50;
+    const delayBetweenItems = 1500;
+    const textSlider = document.getElementById("text-slider");
+  
+    function type() {
+      if (charIndex < textItems[index].length) {
+        textSlider.textContent += textItems[index].charAt(charIndex);
+        charIndex++;
+        setTimeout(type, typingSpeed);
+      } else {
+        setTimeout(erase, delayBetweenItems);
+      }
+    }
+  
+    function erase() {
+      if (charIndex > 0) {
+        textSlider.textContent = textItems[index].substring(0, charIndex - 1);
+        charIndex--;
+        setTimeout(erase, erasingSpeed);
+      } else {
+        index = (index + 1) % textItems.length;
+        setTimeout(type, typingSpeed);
+      }
+    }
+  
+    document.addEventListener("DOMContentLoaded", () => {
+      setTimeout(type, delayBetweenItems);
+    });
+  </script>
+  

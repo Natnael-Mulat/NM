@@ -1285,14 +1285,13 @@ footer .credits a {
   display: inline-block;
   width: 10px;
   height: 20px;
-  background-color: #00ff00; /* Green color for the cursor */
+  background-color: #00ff00; /* Green cursor */
   margin-left: 2px;
   animation: blink 1s infinite;
-  /* Remove potential inherited styles */
-  content: '';
-  border: none;
-  box-shadow: none;
+  /* Prevent default text caret overlap */
+  caret-color: transparent;
 }
+
 
 
 @keyframes blink {

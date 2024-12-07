@@ -673,6 +673,10 @@ a:hover {
 //--//-->   ABOUT
 ======================================*/
 
+/*======================================
+//--//-->   ABOUT
+======================================*/
+
 .about-mf .box-shadow-full {
   padding-top: 4rem;
   padding-bottom: 4rem;
@@ -680,10 +684,51 @@ a:hover {
 
 .about-mf .about-img {
   margin-bottom: 2rem;
+  float: left;  
+  margin-right: 2rem;  
+  width: 200px;  
 }
 
 .about-mf .about-img img {
-  margin-left: 10px;
+  width: 100%;
+  height: auto;
+  margin-left: 0;
+}
+
+.about-info {
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.about-me {
+  clear: both;
+  padding-top: 2rem;
+}
+
+@media (max-width: 768px) {
+  .about-mf .about-img {
+    float: none;
+    margin: 0 auto 2rem;
+    width: 250px;
+  }
+  
+  .about-info {
+    text-align: center;
+  }
+}
+
+/* Keep your existing skill-mf styles */
+
+.skill-mf .progress {
+  background-color: #cde1f8;
+  margin: .5rem 0 1.2rem 0;
+  border-radius: 0;
+  height: .7rem;
+}
+
+.skill-mf .progress .progress-bar {
+  height: .7rem;
+  background-color: #0078ff;
 }
 
 .skill-mf span {

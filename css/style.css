@@ -246,6 +246,11 @@ a:hover {
 .list-ico {
   line-height: 2;
 }
+.list-ico li {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
 .list-ico span {
   color: #0078ff;
@@ -690,7 +695,7 @@ a:hover {
 }
 
 .about-mf .about-img img {
-  width: 50%;
+  width: 100%;
   height: auto;
   margin-left: 0;
 }

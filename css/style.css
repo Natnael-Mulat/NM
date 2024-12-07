@@ -1277,7 +1277,6 @@ footer .credits a {
   display: inline;
   color: #00ff00; /* Neon green */
   font-family: 'Courier New', Courier, monospace;
-  font-size: 1.5rem; /* Adjust size to match the desired style */
 }
 
 .cursor {
@@ -1298,9 +1297,16 @@ footer .credits a {
   }
 }
 
-/* Keep the title styling as default */
-.intro-title {
-  font-family: 'Arial', sans-serif; /* Adjust based on the current font */
-  color: white; /* Default color */
-  font-size: 3rem; /* Match existing style */
+/* Button for Hacker Style */
+.intro .btn-default {
+  color: #00ff00; /* Neon green */
+  border: 1px solid #00ff00;
+  background: transparent;
+  font-family: 'Courier New', Courier, monospace;
+  transition: all 0.3s ease;
+}
+
+.intro .btn-default:hover {
+  background: #00ff00;
+  color: #080303; /* Black background */
 }

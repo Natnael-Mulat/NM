@@ -64,10 +64,44 @@
 	});
 
 	// Activate scrollspy to add active class to navbar items on scroll
-	$('body').scrollspy({
-		target: '#mainNav',
-		offset: navHeight
+// Update the scrollspy initialization
+$('body').scrollspy({
+	target: '#mainNav',
+	offset: navHeight + 10  // Increased offset
+  });
+  
+  // Also modify the scroll event handler to be more precise
+  $(window).on('scroll', function () {
+	var pixels = 50;
+	var top = 1200;
+	var currentTop = $(window).scrollTop();
+  
+	// Update active state based on scroll position
+	$('section').each(function() {
+	  var elementTop = $(this).offset().top - navHeight;
+	  var elementBottom = elementTop + $(this).outerHeight();
+  
+	  if (currentTop >= elementTop && currentTop <= elementBottom) {
+		var id = $(this).attr('id');
+		$('.navbar-nav a').removeClass('active');
+		$('.navbar-nav a[href="#' + id + '"]').addClass('active');
+	  }
 	});
+  
+	if (currentTop > pixels) {
+	  $('.navbar-expand-md').addClass('navbar-reduce');
+	  $('.navbar-expand-md').removeClass('navbar-trans');
+	} else {
+	  $('.navbar-expand-md').addClass('navbar-trans');
+	  $('.navbar-expand-md').removeClass('navbar-reduce');
+	}
+  
+	if (currentTop > top) {
+	  $('.scrolltop-mf').fadeIn(1000, "easeInOutExpo");
+	} else {
+	  $('.scrolltop-mf').fadeOut(1000, "easeInOutExpo");
+	}
+  });
 	/*--/ End Scrolling nav /--*/
 
 	/*--/ Navbar Menu Reduce /--*/

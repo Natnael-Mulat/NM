@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://natnael-mulat.github.io/NM/</loc>
+  <lastmod>2024-12-08T17:53:04+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://natnael-mulat.github.io/NM/files/CV.pdf</loc>
+  <lastmod>2024-12-08T17:53:04+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://natnael-mulat.github.io/NM/files/GapsTaken.pdf</loc>
+  <lastmod>2024-12-08T17:53:04+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://natnael-mulat.github.io/NM/files/HappyInc.pdf</loc>
+  <lastmod>2024-12-08T17:53:04+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://natnael-mulat.github.io/NM/files/IntlStu.pdf</loc>
+  <lastmod>2024-12-08T17:53:04+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://natnael-mulat.github.io/NM/files/HeartStroke.pdf</loc>
+  <lastmod>2024-12-08T17:53:04+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://natnael-mulat.github.io/NM/files/miRNA.pdf</loc>
+  <lastmod>2024-12-08T17:53:04+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://natnael-mulat.github.io/NM/files/WineQuality.pdf</loc>
+  <lastmod>2024-12-08T17:53:04+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://natnael-mulat.github.io/NM/files/FashionMNIST.pdf</loc>
+  <lastmod>2024-12-08T17:53:04+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://natnael-mulat.github.io/NM/files/RecommenderSystemsMovieLens100K.pdf</loc>
+  <lastmod>2024-12-08T17:53:04+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+
+</urlset>

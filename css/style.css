@@ -1325,14 +1325,14 @@ footer .credits a {
 /* Hacker Style Typing Effect */
 .typed-text {
   display: inline;
-  color: #00ff00; /* Neon green */
+  color:#0078ff; /* Neon green */
   font-family: 'Courier New', Courier, monospace;
 }
 
 .cursor {
   display: inline-block;
-  color: #00FF00; /* Change from white (#FFFFFF) to match background */
-  background-color: #00FF00;
+  color:#0078ff; /* Change from white (#FFFFFF) to match background */
+  background-color:#0078ff;
   width: 10px;
   height: 20px;
   margin-left: 5px;

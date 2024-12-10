@@ -1,73 +1,81 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 150">
   <defs>
     <!-- Enhanced glow filter -->
-    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur1"/>
-      <feFlood flood-color="#0078ff" flood-opacity="0.8" result="color1"/>
+    <filter id="techGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="1" result="blur1"/>
+      <feFlood flood-color="#00f7ff" flood-opacity="0.9" result="color1"/>
       <feComposite in="color1" in2="blur1" operator="in" result="innerGlow"/>
       
-      <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur2"/>
-      <feFlood flood-color="#0078ff" flood-opacity="0.6" result="color2"/>
+      <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur2"/>
+      <feFlood flood-color="#0078ff" flood-opacity="0.7" result="color2"/>
       <feComposite in="color2" in2="blur2" operator="in" result="outerGlow"/>
       
-      <feGaussianBlur in="SourceGraphic" stdDeviation="12" result="blur3"/>
-      <feFlood flood-color="#0078ff" flood-opacity="0.3" result="color3"/>
-      <feComposite in="color3" in2="blur3" operator="in" result="wideGlow"/>
-      
       <feMerge>
-        <feMergeNode in="wideGlow"/>
         <feMergeNode in="outerGlow"/>
         <feMergeNode in="innerGlow"/>
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
 
-    <!-- Binary pattern with proper spacing -->
-    <pattern id="binaryPattern" x="0" y="0" width="12" height="20" patternUnits="userSpaceOnUse">
-      <text x="1" y="14" font-family="Courier" font-size="14" fill="#0078ff" opacity="0.9">0</text>
-    </pattern>
-
-    <pattern id="binaryPattern2" x="6" y="10" width="12" height="20" patternUnits="userSpaceOnUse">
-      <text x="1" y="14" font-family="Courier" font-size="14" fill="#0078ff" opacity="0.9">1</text>
+    <!-- Circuit pattern -->
+    <pattern id="circuitPattern" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M5 20h30M20 5v30M35 20h5M20 35v5M20 0v5" stroke="#0078ff" stroke-width="1" fill="none"/>
+      <circle cx="20" cy="20" r="3" fill="#0078ff"/>
     </pattern>
 
     <!-- Mask for the letters -->
     <mask id="letterMask">
-      <text x="50" y="130" font-family="Arial Black" font-size="120" fill="white" font-weight="bold">
+      <text x="50" y="100" font-family="Arial Black" font-size="120" fill="white" font-weight="bold">
         NATNAEL MULAT
       </text>
     </mask>
   </defs>
 
   <style>
-    @keyframes streamDown {
-      from { transform: translateY(-20px); }
-      to { transform: translateY(0px); }
+    @keyframes pulse {
+      0% { opacity: 0.3; }
+      50% { opacity: 1; }
+      100% { opacity: 0.3; }
     }
-    .binary-container {
-      animation: streamDown 0.8s linear infinite;
+    @keyframes circuitFlow {
+      0% { stroke-dashoffset: 0; }
+      100% { stroke-dashoffset: -20; }
     }
-    .binary-container-slow {
-      animation: streamDown 1s linear infinite;
+    .circuit-lines {
+      stroke-dasharray: 4,4;
+      animation: circuitFlow 1s linear infinite;
+    }
+    .pulse {
+      animation: pulse 2s ease-in-out infinite;
     }
   </style>
   
-  <!-- Glowing letters with animated binary -->
-  <g filter="url(#glow)">
-    <!-- Letter fill with animated binary -->
+  <!-- Main content -->
+  <g filter="url(#techGlow)">
+    <!-- Background pattern -->
     <g mask="url(#letterMask)">
-      <rect width="1200" height="200" fill="#0078ff" opacity="0.2"/>
-      <g class="binary-container">
-        <rect width="1200" height="400" fill="url(#binaryPattern)" y="-100"/>
-      </g>
-      <g class="binary-container-slow">
-        <rect width="1200" height="400" fill="url(#binaryPattern2)" y="-100"/>
+      <rect width="1200" height="150" fill="url(#circuitPattern)" class="pulse"/>
+      
+      <!-- Animated circuit lines -->
+      <g class="circuit-lines">
+        <path d="M0 30 H1200 M0 60 H1200 M0 90 H1200" stroke="#0078ff" stroke-width="1" fill="none"/>
       </g>
     </g>
     
-    <!-- Letter outlines -->
-    <text x="50" y="130" font-family="Arial Black" font-size="120" fill="none" stroke="#0078ff" stroke-width="2" font-weight="bold">
+    <!-- Letter outlines with dual stroke for enhanced effect -->
+    <text x="50" y="100" font-family="Arial Black" font-size="120" fill="none" stroke="#00f7ff" stroke-width="1" font-weight="bold">
       NATNAEL MULAT
     </text>
+    <text x="50" y="100" font-family="Arial Black" font-size="120" fill="none" stroke="#0078ff" stroke-width="2" font-weight="bold">
+      NATNAEL MULAT
+    </text>
+  </g>
+
+  <!-- Accent dots -->
+  <g class="pulse">
+    <circle cx="45" cy="20" r="2" fill="#00f7ff"/>
+    <circle cx="1155" cy="20" r="2" fill="#00f7ff"/>
+    <circle cx="45" cy="130" r="2" fill="#00f7ff"/>
+    <circle cx="1155" cy="130" r="2" fill="#00f7ff"/>
   </g>
 </svg>

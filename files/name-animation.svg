@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200">
+  <defs>
+    <!-- Enhanced glow filter -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur1"/>
+      <feFlood flood-color="#0078ff" flood-opacity="0.8" result="color1"/>
+      <feComposite in="color1" in2="blur1" operator="in" result="innerGlow"/>
+      
+      <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur2"/>
+      <feFlood flood-color="#0078ff" flood-opacity="0.6" result="color2"/>
+      <feComposite in="color2" in2="blur2" operator="in" result="outerGlow"/>
+      
+      <feGaussianBlur in="SourceGraphic" stdDeviation="12" result="blur3"/>
+      <feFlood flood-color="#0078ff" flood-opacity="0.3" result="color3"/>
+      <feComposite in="color3" in2="blur3" operator="in" result="wideGlow"/>
+      
+      <feMerge>
+        <feMergeNode in="wideGlow"/>
+        <feMergeNode in="outerGlow"/>
+        <feMergeNode in="innerGlow"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Clear binary pattern -->
+    <pattern id="binaryPattern" x="0" y="0" width="16" height="16" patternUnits="userSpaceOnUse">
+      <text x="0" y="12" font-family="Courier" font-size="14" fill="#0078ff" opacity="0.9" letter-spacing="-2">01</text>
+    </pattern>
+
+    <!-- Mask for the letters -->
+    <mask id="letterMask">
+      <text x="50" y="130" font-family="Arial Black" font-size="120" fill="white" font-weight="bold">
+        NATNAEL MULAT
+      </text>
+    </mask>
+  </defs>
+
+  <style>
+    @keyframes streamUp {
+      from { transform: translateY(16px); }
+      to { transform: translateY(0px); }
+    }
+    .binary-container {
+      animation: streamUp 0.8s linear infinite;
+    }
+  </style>
+  
+  <!-- Glowing letters with animated binary -->
+  <g filter="url(#glow)">
+    <!-- Letter fill with animated binary -->
+    <g mask="url(#letterMask)">
+      <rect width="1200" height="200" fill="#0078ff" opacity="0.2"/>
+      <g class="binary-container">
+        <!-- Multiple overlapping patterns for complete coverage -->
+        <rect width="1200" height="400" fill="url(#binaryPattern)" y="-200"/>
+        <rect width="1200" height="400" fill="url(#binaryPattern)" y="-192"/>
+        <rect width="1200" height="400" fill="url(#binaryPattern)" y="-184"/>
+        <rect width="1200" height="400" fill="url(#binaryPattern)" y="-176"/>
+        <rect width="1200" height="400" fill="url(#binaryPattern)" y="-168"/>
+        <rect width="1200" height="400" fill="url(#binaryPattern)" y="-160"/>
+        <rect width="1200" height="400" fill="url(#binaryPattern)" y="-152"/>
+        <rect width="1200" height="400" fill="url(#binaryPattern)" y="-144"/>
+        <!-- Offset patterns for complete coverage -->
+        <rect width="1200" height="400" fill="url(#binaryPattern)" x="8" y="-200"/>
+        <rect width="1200" height="400" fill="url(#binaryPattern)" x="8" y="-192"/>
+        <rect width="1200" height="400" fill="url(#binaryPattern)" x="8" y="-184"/>
+        <rect width="1200" height="400" fill="url(#binaryPattern)" x="8" y="-176"/>
+        <rect width="1200" height="400" fill="url(#binaryPattern)" x="8" y="-168"/>
+        <rect width="1200" height="400" fill="url(#binaryPattern)" x="8" y="-160"/>
+        <rect width="1200" height="400" fill="url(#binaryPattern)" x="8" y="-152"/>
+        <rect width="1200" height="400" fill="url(#binaryPattern)" x="8" y="-144"/>
+      </g>
+    </g>
+    
+    <!-- Letter outlines -->
+    <text x="50" y="130" font-family="Arial Black" font-size="120" fill="none" stroke="#0078ff" stroke-width="2" font-weight="bold">
+      NATNAEL MULAT
+    </text>
+  </g>
+</svg>

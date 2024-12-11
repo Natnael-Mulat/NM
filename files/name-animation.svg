@@ -1,82 +1,118 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 150">
   <defs>
-    <!-- Glow filter for letters -->
-    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur1"/>
-      <feFlood flood-color="#0078ff" flood-opacity="0.8" result="color1"/>
+    <!-- Enhanced glow filter -->
+    <filter id="energyGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="1" result="blur1"/>
+      <feFlood flood-color="#00ff00" flood-opacity="0.9" result="color1"/>
       <feComposite in="color1" in2="blur1" operator="in" result="innerGlow"/>
+      
+      <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur2"/>
+      <feFlood flood-color="#0078ff" flood-opacity="0.7" result="color2"/>
+      <feComposite in="color2" in2="blur2" operator="in" result="outerGlow"/>
+      
       <feMerge>
+        <feMergeNode in="outerGlow"/>
         <feMergeNode in="innerGlow"/>
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
 
-    <!-- Mask for letters -->
+    <!-- Energy pulse gradient -->
+    <linearGradient id="energyGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#0078ff;stop-opacity:0"/>
+      <stop offset="50%" style="stop-color:#00ff00;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#0078ff;stop-opacity:0"/>
+      <animate attributeName="x1" from="-100%" to="100%" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="x2" from="0%" to="200%" dur="2s" repeatCount="indefinite"/>
+    </linearGradient>
+
+    <!-- Letter mask -->
     <mask id="letterMask">
       <text x="50" y="100" font-family="Arial Black" font-size="120" fill="white" font-weight="bold">
         NATNAEL MULAT
       </text>
     </mask>
+
+    <!-- Circuit pattern -->
+    <pattern id="circuitPattern" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+      <path d="M0 25h50M25 0v50" stroke="#0078ff" stroke-width="0.5" opacity="0.3"/>
+      <circle cx="25" cy="25" r="3" fill="#0078ff" opacity="0.5"/>
+    </pattern>
   </defs>
 
   <style>
-    @keyframes moveRight {
-      from { transform: translateX(-100px); }
-      to { transform: translateX(1300px); }
+    @keyframes fadeInOut {
+      0%, 100% { opacity: 0; }
+      50% { opacity: 1; }
     }
-    @keyframes wave {
-      0%, 100% { transform: rotate(0deg); }
-      50% { transform: rotate(-30deg); }
+    @keyframes circuitFlow {
+      0% { stroke-dashoffset: 1000; }
+      100% { stroke-dashoffset: 0; }
     }
-    @keyframes walk {
-      0%, 100% { transform: rotate(-20deg); }
-      50% { transform: rotate(20deg); }
+    @keyframes dataStream {
+      from { transform: translateX(-100%); }
+      to { transform: translateX(100%); }
     }
-    .person-container {
-      animation: moveRight 10s linear infinite;
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.5; }
+      50% { transform: scale(1.2); opacity: 1; }
     }
-    .waving-arm {
-      transform-origin: 0 0;
-      animation: wave 1s ease-in-out infinite;
+    .energy-point {
+      animation: pulse 1.5s ease-in-out infinite;
     }
-    .walking-leg-left {
-      transform-origin: 0 0;
-      animation: walk 0.5s linear infinite;
+    .data-stream {
+      animation: dataStream 3s linear infinite;
     }
-    .walking-leg-right {
-      transform-origin: 0 0;
-      animation: walk 0.5s linear infinite reverse;
+    .circuit-line {
+      stroke-dasharray: 1000;
+      animation: circuitFlow 10s linear infinite;
     }
   </style>
 
-  <!-- Background fill for letters -->
-  <g mask="url(#letterMask)">
-    <rect width="1200" height="150" fill="#000033"/>
-    
-    <!-- Walking person -->
-    <g class="person-container">
-      <g transform="translate(25, 75) scale(0.8)">
-        <!-- Body -->
-        <line x1="0" y1="0" x2="0" y2="30" stroke="#0078ff" stroke-width="3"/>
-        
-        <!-- Head -->
-        <circle cx="0" cy="-5" r="8" fill="#0078ff"/>
-        
-        <!-- Waving arm -->
-        <line class="waving-arm" x1="0" y1="5" x2="15" y2="-10" stroke="#0078ff" stroke-width="3"/>
-        
-        <!-- Static arm -->
-        <line x1="0" y1="5" x2="-15" y2="15" stroke="#0078ff" stroke-width="3"/>
-        
-        <!-- Walking legs -->
-        <line class="walking-leg-left" x1="0" y1="30" x2="10" y2="45" stroke="#0078ff" stroke-width="3"/>
-        <line class="walking-leg-right" x1="0" y1="30" x2="-10" y2="45" stroke="#0078ff" stroke-width="3"/>
+  <!-- Main content -->
+  <g filter="url(#energyGlow)">
+    <g mask="url(#letterMask)">
+      <!-- Background pattern -->
+      <rect width="1200" height="150" fill="#000022"/>
+      <rect width="1200" height="150" fill="url(#circuitPattern)"/>
+
+      <!-- Circuit paths -->
+      <path class="circuit-line" d="M0 75 Q 300 25, 600 75 T 1200 75" stroke="#0078ff" fill="none" stroke-width="2"/>
+      <path class="circuit-line" d="M0 50 Q 300 100, 600 50 T 1200 50" stroke="#00ff00" fill="none" stroke-width="2"/>
+      <path class="circuit-line" d="M0 100 Q 300 50, 600 100 T 1200 100" stroke="#0078ff" fill="none" stroke-width="2"/>
+
+      <!-- Energy pulse overlay -->
+      <rect width="1200" height="150" fill="url(#energyGradient)" opacity="0.5"/>
+
+      <!-- Energy points -->
+      <g class="energy-points">
+        <circle class="energy-point" cx="100" cy="75" r="4" fill="#00ff00"/>
+        <circle class="energy-point" cx="300" cy="50" r="4" fill="#00ff00"/>
+        <circle class="energy-point" cx="500" cy="75" r="4" fill="#00ff00"/>
+        <circle class="energy-point" cx="700" cy="100" r="4" fill="#00ff00"/>
+        <circle class="energy-point" cx="900" cy="75" r="4" fill="#00ff00"/>
+        <circle class="energy-point" cx="1100" cy="50" r="4" fill="#00ff00"/>
+      </g>
+
+      <!-- Data streams -->
+      <g class="data-stream">
+        <text x="0" y="40" font-family="monospace" fill="#00ff00" font-size="10" opacity="0.7">
+          DATA_STREAM_01010101
+        </text>
+        <text x="0" y="110" font-family="monospace" fill="#0078ff" font-size="10" opacity="0.7">
+          PROCESSING_11001100
+        </text>
       </g>
     </g>
-  </g>
 
-  <!-- Letter outlines -->
-  <text x="50" y="100" font-family="Arial Black" font-size="120" fill="none" stroke="#0078ff" stroke-width="2" font-weight="bold">
-    NATNAEL MULAT
-  </text>
+    <!-- Letter outlines with dual color effect -->
+    <g>
+      <text x="50" y="100" font-family="Arial Black" font-size="120" fill="none" stroke="#00ff00" stroke-width="1" font-weight="bold">
+        NATNAEL MULAT
+      </text>
+      <text x="50" y="100" font-family="Arial Black" font-size="120" fill="none" stroke="#0078ff" stroke-width="2" font-weight="bold">
+        NATNAEL MULAT
+      </text>
+    </g>
+  </g>
 </svg>

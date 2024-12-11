@@ -1,25 +1,45 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 150">
   <defs>
-    <!-- Glow filter -->
-    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+    <!-- Intense glow filter -->
+    <filter id="intenseGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <!-- Bright inner glow -->
       <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur1"/>
-      <feFlood flood-color="#0078ff" flood-opacity="0.8" result="color1"/>
+      <feFlood flood-color="#0078ff" flood-opacity="1" result="color1"/>
       <feComposite in="color1" in2="blur1" operator="in" result="innerGlow"/>
       
+      <!-- Strong middle glow -->
       <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur2"/>
-      <feFlood flood-color="#0078ff" flood-opacity="0.6" result="color2"/>
-      <feComposite in="color2" in2="blur2" operator="in" result="outerGlow"/>
+      <feFlood flood-color="#0078ff" flood-opacity="0.9" result="color2"/>
+      <feComposite in="color2" in2="blur2" operator="in" result="mediumGlow"/>
+      
+      <!-- Wide outer glow -->
+      <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur3"/>
+      <feFlood flood-color="#0078ff" flood-opacity="0.7" result="color3"/>
+      <feComposite in="color3" in2="blur3" operator="in" result="outerGlow"/>
+      
+      <!-- Extra wide glow -->
+      <feGaussianBlur in="SourceGraphic" stdDeviation="15" result="blur4"/>
+      <feFlood flood-color="#0078ff" flood-opacity="0.5" result="color4"/>
+      <feComposite in="color4" in2="blur4" operator="in" result="extraGlow"/>
       
       <feMerge>
+        <feMergeNode in="extraGlow"/>
         <feMergeNode in="outerGlow"/>
+        <feMergeNode in="mediumGlow"/>
         <feMergeNode in="innerGlow"/>
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
   </defs>
 
-  <!-- Main text with glow -->
-  <g filter="url(#glow)">
+  <!-- Main text with intense glow -->
+  <g filter="url(#intenseGlow)">
+    <!-- Background stroke for extra glow base -->
+    <text x="50" y="100" font-family="Arial Black" font-size="120" fill="none" stroke="#0078ff" stroke-width="4" stroke-opacity="0.3" font-weight="bold">
+      NATNAEL MULAT
+    </text>
+    
+    <!-- Main text -->
     <text x="50" y="100" font-family="Arial Black" font-size="120" fill="none" stroke="#0078ff" stroke-width="2" font-weight="bold">
       NATNAEL MULAT
     </text>

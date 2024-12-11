@@ -1,13 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 150">
   <defs>
-    <!-- Enhanced glow filter -->
-    <filter id="energyGlow" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur in="SourceGraphic" stdDeviation="1" result="blur1"/>
-      <feFlood flood-color="#0078ff" flood-opacity="0.9" result="color1"/>
+    <!-- Glow filter -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur1"/>
+      <feFlood flood-color="#0078ff" flood-opacity="0.8" result="color1"/>
       <feComposite in="color1" in2="blur1" operator="in" result="innerGlow"/>
       
-      <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur2"/>
-      <feFlood flood-color="#0078ff" flood-opacity="0.7" result="color2"/>
+      <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur2"/>
+      <feFlood flood-color="#0078ff" flood-opacity="0.6" result="color2"/>
       <feComposite in="color2" in2="blur2" operator="in" result="outerGlow"/>
       
       <feMerge>
@@ -18,39 +18,8 @@
     </filter>
   </defs>
 
-  <style>
-    @keyframes drawLine {
-      0% { stroke-dashoffset: 1200; }
-      100% { stroke-dashoffset: 0; }
-    }
-    .circuit-line {
-      stroke-dasharray: 1200;
-      animation: drawLine 3s linear forwards;
-    }
-  </style>
-
-  <!-- Main content -->
-  <g filter="url(#energyGlow)">
-    <mask id="letterMask">
-      <text x="50" y="100" font-family="Arial Black" font-size="120" fill="white" font-weight="bold">
-        NATNAEL MULAT
-      </text>
-    </mask>
-
-    <g mask="url(#letterMask)">
-      <!-- Circuit paths -->
-      <rect width="1200" height="150" fill="url(#circuitPattern)" opacity="0.3"/>
-      
-      <!-- Curved lines that draw once and stay -->
-      <path class="circuit-line" d="M0 75 C300 25, 600 125, 1200 75" stroke="#0078ff" fill="none" stroke-width="2"/>
-      <path class="circuit-line" d="M0 50 C300 100, 600 0, 1200 50" stroke="#0078ff" fill="none" stroke-width="2" style="animation-delay: 0.5s"/>
-      <path class="circuit-line" d="M0 100 C300 50, 600 150, 1200 100" stroke="#0078ff" fill="none" stroke-width="2" style="animation-delay: 1s"/>
-      
-      <!-- Green curved line -->
-      <path class="circuit-line" d="M0 25 C300 75, 600 -25, 1200 25" stroke="#00ff00" fill="none" stroke-width="2" style="animation-delay: 1.5s"/>
-    </g>
-
-    <!-- Letter outlines -->
+  <!-- Main text with glow -->
+  <g filter="url(#glow)">
     <text x="50" y="100" font-family="Arial Black" font-size="120" fill="none" stroke="#0078ff" stroke-width="2" font-weight="bold">
       NATNAEL MULAT
     </text>

@@ -1,29 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 150">
   <defs>
-    <!-- Enhanced glow filter -->
-    <filter id="techGlow" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur in="SourceGraphic" stdDeviation="1" result="blur1"/>
-      <feFlood flood-color="#00f7ff" flood-opacity="0.9" result="color1"/>
+    <!-- Glow filter for letters -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur1"/>
+      <feFlood flood-color="#0078ff" flood-opacity="0.8" result="color1"/>
       <feComposite in="color1" in2="blur1" operator="in" result="innerGlow"/>
-      
-      <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur2"/>
-      <feFlood flood-color="#0078ff" flood-opacity="0.7" result="color2"/>
-      <feComposite in="color2" in2="blur2" operator="in" result="outerGlow"/>
-      
       <feMerge>
-        <feMergeNode in="outerGlow"/>
         <feMergeNode in="innerGlow"/>
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
 
-    <!-- Circuit pattern -->
-    <pattern id="circuitPattern" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
-      <path d="M5 20h30M20 5v30M35 20h5M20 35v5M20 0v5" stroke="#0078ff" stroke-width="1" fill="none"/>
-      <circle cx="20" cy="20" r="3" fill="#0078ff"/>
-    </pattern>
-
-    <!-- Mask for the letters -->
+    <!-- Mask for letters -->
     <mask id="letterMask">
       <text x="50" y="100" font-family="Arial Black" font-size="120" fill="white" font-weight="bold">
         NATNAEL MULAT
@@ -32,50 +20,63 @@
   </defs>
 
   <style>
-    @keyframes pulse {
-      0% { opacity: 0.3; }
-      50% { opacity: 1; }
-      100% { opacity: 0.3; }
+    @keyframes moveRight {
+      from { transform: translateX(-100px); }
+      to { transform: translateX(1300px); }
     }
-    @keyframes circuitFlow {
-      0% { stroke-dashoffset: 0; }
-      100% { stroke-dashoffset: -20; }
+    @keyframes wave {
+      0%, 100% { transform: rotate(0deg); }
+      50% { transform: rotate(-30deg); }
     }
-    .circuit-lines {
-      stroke-dasharray: 4,4;
-      animation: circuitFlow 1s linear infinite;
+    @keyframes walk {
+      0%, 100% { transform: rotate(-20deg); }
+      50% { transform: rotate(20deg); }
     }
-    .pulse {
-      animation: pulse 2s ease-in-out infinite;
+    .person-container {
+      animation: moveRight 10s linear infinite;
+    }
+    .waving-arm {
+      transform-origin: 0 0;
+      animation: wave 1s ease-in-out infinite;
+    }
+    .walking-leg-left {
+      transform-origin: 0 0;
+      animation: walk 0.5s linear infinite;
+    }
+    .walking-leg-right {
+      transform-origin: 0 0;
+      animation: walk 0.5s linear infinite reverse;
     }
   </style>
-  
-  <!-- Main content -->
-  <g filter="url(#techGlow)">
-    <!-- Background pattern -->
-    <g mask="url(#letterMask)">
-      <rect width="1200" height="150" fill="url(#circuitPattern)" class="pulse"/>
-      
-      <!-- Animated circuit lines -->
-      <g class="circuit-lines">
-        <path d="M0 30 H1200 M0 60 H1200 M0 90 H1200" stroke="#0078ff" stroke-width="1" fill="none"/>
+
+  <!-- Background fill for letters -->
+  <g mask="url(#letterMask)">
+    <rect width="1200" height="150" fill="#000033"/>
+    
+    <!-- Walking person -->
+    <g class="person-container">
+      <g transform="translate(25, 75) scale(0.8)">
+        <!-- Body -->
+        <line x1="0" y1="0" x2="0" y2="30" stroke="#0078ff" stroke-width="3"/>
+        
+        <!-- Head -->
+        <circle cx="0" cy="-5" r="8" fill="#0078ff"/>
+        
+        <!-- Waving arm -->
+        <line class="waving-arm" x1="0" y1="5" x2="15" y2="-10" stroke="#0078ff" stroke-width="3"/>
+        
+        <!-- Static arm -->
+        <line x1="0" y1="5" x2="-15" y2="15" stroke="#0078ff" stroke-width="3"/>
+        
+        <!-- Walking legs -->
+        <line class="walking-leg-left" x1="0" y1="30" x2="10" y2="45" stroke="#0078ff" stroke-width="3"/>
+        <line class="walking-leg-right" x1="0" y1="30" x2="-10" y2="45" stroke="#0078ff" stroke-width="3"/>
       </g>
     </g>
-    
-    <!-- Letter outlines with dual stroke for enhanced effect -->
-    <text x="50" y="100" font-family="Arial Black" font-size="120" fill="none" stroke="#00f7ff" stroke-width="1" font-weight="bold">
-      NATNAEL MULAT
-    </text>
-    <text x="50" y="100" font-family="Arial Black" font-size="120" fill="none" stroke="#0078ff" stroke-width="2" font-weight="bold">
-      NATNAEL MULAT
-    </text>
   </g>
 
-  <!-- Accent dots -->
-  <g class="pulse">
-    <circle cx="45" cy="20" r="2" fill="#00f7ff"/>
-    <circle cx="1155" cy="20" r="2" fill="#00f7ff"/>
-    <circle cx="45" cy="130" r="2" fill="#00f7ff"/>
-    <circle cx="1155" cy="130" r="2" fill="#00f7ff"/>
-  </g>
+  <!-- Letter outlines -->
+  <text x="50" y="100" font-family="Arial Black" font-size="120" fill="none" stroke="#0078ff" stroke-width="2" font-weight="bold">
+    NATNAEL MULAT
+  </text>
 </svg>
